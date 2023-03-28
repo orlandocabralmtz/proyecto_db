@@ -59,8 +59,22 @@ class DragonBallService {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 const index = this.personajes.findIndex(personaje => personaje.id === parseInt(id));
-                console.log(index)
                 this.personajes.splice(index, 1);    
+                resolve();
+            }, 1000)
+        })
+    }
+     
+    update(id, data){
+        return new Promise((resolve, reject) =>{
+            setTimeout(() => {
+                const index = this.personajes.findIndex(personaje => personaje.id === parseInt(id));  //Encuentra el personaje en base al ID
+                const oldCharacter = this.personajes[index];  //Lo guarda en oldCharacter
+                console.log(oldCharacter)
+                const updatedCharacter = { ...oldCharacter, ...data};   // junta los valores usando spread operator 
+                console.log(data)
+                this.personajes[index] = updatedCharacter;  //actualiza segun el valor de index
+                console.log(updatedCharacter)
                 resolve();
             }, 1000)
         })

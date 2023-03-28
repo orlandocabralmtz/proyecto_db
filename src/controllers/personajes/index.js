@@ -48,10 +48,19 @@ const erase = async (req, res) => {
   try{
     const id = req.params.id;
     dragonBallService.erase(id);
-    console.log(id)
     res.status(200).send();
   } catch(error){
     res.status(404).json({message: 'no se pudo elimar el personaje'})
+  }
+}
+const update = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = req.body
+    dragonBallService.update(id, data)
+    res.status(200).send();
+  } catch(error){
+    res.status(404).json({ message : 'no se pudo actualizar la información'})
   }
 }
 
@@ -62,5 +71,6 @@ module.exports = {
     getById,
     editComplete,
     newCharacter,
-    erase
+    erase,
+    update
 }
