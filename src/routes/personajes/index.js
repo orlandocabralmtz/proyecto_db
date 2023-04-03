@@ -4,7 +4,7 @@ const  dragonBall = express.Router();
 
 // getAll
 dragonBall.get('/', get);
-
+    
 //getID
 dragonBall.get('/:id/', getById);
 
